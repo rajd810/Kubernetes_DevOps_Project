@@ -17,15 +17,15 @@ pipeline {
       }
     }
 
-    stage ('Build Application') {
+    stage ('Build Docker Image') {
       steps {
-        sh 'mvn clean package'
+        sh 'docker build —tag image-name .'
       }
     }
 
-    stage ('Test Application') {
+    stage ('Run Docker Image') {
       steps {
-        sh 'mvn test'
+        sh 'docker run -d -p 5088:5088 image-name'
       }
     }
   }
