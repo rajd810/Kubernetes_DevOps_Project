@@ -6,7 +6,7 @@ pipeline {
   }
   environment {
     APP_NAME = "kubernetes_devops_project"
-    RELEASE = "1.0.0"
+    RELEASE = "2.0.0"
     DOCKER_USER = "rajd810@outlook.com"
     DOCKER_PASS = "docker"
     IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
@@ -29,11 +29,10 @@ pipeline {
     stage ('Build & Push Docker Image') {
       steps {
         script {
-          docker.withRegistry('',DOCKER_PASS) {
+            docker.withRegistry('',DOCKER_PASS) {
             docker_image = docker.build "${IMAGE_NAME}"
           }
-
-          docker.withRegistry('', DOCKER_PASS) {
+            docker.withRegistry('', DOCKER_PASS) {
             docker_image.push("${IMAGE_TAG}")
             docker_image.push('latest')
           }
