@@ -9,7 +9,7 @@ pipeline {
     RELEASE = "2.0.0"
     DOCKER_USER = "rajd810@outlook.com"
     DOCKER_PASS = "docker"
-    IMAGE_NAME = "DevOps" + "/" + "${APP_NAME}"
+    IMAGE_NAME = "devops" + "/" + "${APP_NAME}"
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
   }
 
