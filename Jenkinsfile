@@ -4,7 +4,7 @@ pipeline {
     jdk 'Java17'
     maven 'Maven3'
   }
-  enviornment {
+  environment {
     APP_NAME = "kubernetes_devops_project"
     RELEASE = "1.0.0"
     DOCKER_USER = "rajd810@outlook.com"
