@@ -40,11 +40,5 @@ pipeline {
         }
       }
     }
-
-    stage ('Run Docker Image') {
-      steps {
-        sh 'docker run -d -p 5088:5088 image-name'
-      }
-    }
   }
 }
