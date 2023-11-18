@@ -39,7 +39,7 @@ pipeline {
     stage ('Docker Login') {
       steps {
         script {
-          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKER_PASS --password-stdin'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKER_PASS --password-stdin aws_account_id.dkr.ecr.region.amazonaws.com'
         }
       }
     }
