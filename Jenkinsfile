@@ -9,8 +9,9 @@ pipeline {
     RELEASE = "2.0.0"
     DOCKER_USER = "rajd810@outlook.com"
     DOCKER_PASS = "docker"
-    IMAGE_NAME = "devops" + "/" + "${APP_NAME}"
+    IMAGE_NAME = "rajd810" + "/" + "${APP_NAME}"
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+    registry = "<dockerhub-username>/<repo-name>"
   }
 
   stages {
@@ -26,16 +27,10 @@ pipeline {
       }
     }
 
-    stage ('Build & Push Docker Image') {
+    stage ('Build Docker Image') {
       steps {
         script {
-            docker.withRegistry('',DOCKER_PASS) {
-            docker_image = docker.build "${IMAGE_NAME}"
-          }
-            docker.withRegistry('', DOCKER_PASS) {
-            docker_image.push("${IMAGE_TAG}")
-            docker_image.push('latest')
-          }
+          sh 'docker build -t "${IMAGE_NAME}" .'
         }
       }
     }
