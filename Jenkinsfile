@@ -39,7 +39,7 @@ pipeline {
     stage ('Docker Login') {
       steps {
         script {
-          sh 'docker login -u $DOCKER_USER --password-stdin $DOCKER_PASS'
+          sh 'docker login -u $DOCKER_USER --password-stdin'
         }
       }
     }
