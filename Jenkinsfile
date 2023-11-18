@@ -30,7 +30,16 @@ pipeline {
     stage ('Build Docker Image') {
       steps {
         script {
-          sh 'docker build -t "${IMAGE_NAME}" .'
+          //sh 'docker build -t "${IMAGE_NAME}" .'
+          echo "Passing to next steps"
+        }
+      }
+    }
+
+    stage ('Docker Login') {
+      steps {
+        script {
+          sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
         }
       }
     }
