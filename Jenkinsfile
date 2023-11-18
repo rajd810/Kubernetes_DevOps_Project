@@ -39,7 +39,7 @@ pipeline {
     stage ('Docker Login') {
       steps {
         script {
-          sh 'docker login -u $DOCKER_USER --password-stdin'
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKER_PASS --password-stdin''
         }
       }
     }
